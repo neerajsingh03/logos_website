@@ -127,7 +127,7 @@ class UserDashboardController extends Controller
             return response()->json(['error' => 'User not found'], 404);
         }
         $otp =  rand(123456, 999999);
-
+        //  this is 
         OtpVerification::create([
             'user_id' => $user->id,
             'otp' => $otp,
