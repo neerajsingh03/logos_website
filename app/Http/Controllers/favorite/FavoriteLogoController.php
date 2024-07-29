@@ -15,7 +15,7 @@ class FavoriteLogoController extends Controller
             return redirect('login');
         } else {
             //*********check multiple product at same user Id *************//
-            $userIdCheck = Favorite::where('user_id', auth()->user()->id)->where('logo_id', $request->id)->exists();
+            $userIdCheck = Favorite::where([['user_id', auth()->user()->id],['logo_id', $request->id]])->exists();
             if (!$userIdCheck) {
                 $cart = new Favorite;
                 $cart->user_id =  auth()->user()->id;
@@ -33,7 +33,6 @@ class FavoriteLogoController extends Controller
         $counts = Favorite::where('user_id', auth()->user()->id)->count();
         $userCart = Favorite::with('logo')->where('user_id', $user->id)->get();
         $totalCartPrice = 0;
-
         foreach ($userCart as $item) {
             // Add the Logo price to the total cart price
             $totalCartPrice += $item->logo->price;
