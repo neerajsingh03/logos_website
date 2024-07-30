@@ -25,8 +25,6 @@ Route::get('/step', function () {
 });
 // testing purpose route define
 
-Route::get('user-profile',[UserProfileController::class,'userProfile']);
-
 
 
 
@@ -67,6 +65,10 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin-dashboard/disaaprove-logo', [AdminLogoController::class, 'disapprovedLogo'])->name('disapprove_logo');
     Route::get('change-password',[AdminLogoController::class,'changepassword']);
     Route::post('change-pass-procc',[AdminLogoController::class,'changePassProcc']);
+
+    // User details
+    Route::get('user-profile',[UserProfileController::class,'userProfile']);
+    Route::get('edit-profile/{id}',[UserProfileController::class,'editProfile']);
 });
 
 //****************************************User Route *************************************//

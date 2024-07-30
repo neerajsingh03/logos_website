@@ -1,0 +1,12 @@
+[1mdiff --git a/app/Http/Controllers/user/UserDashboardController.php b/app/Http/Controllers/user/UserDashboardController.php[m
+[1mindex 8e4a800..9b097be 100644[m
+[1m--- a/app/Http/Controllers/user/UserDashboardController.php[m
+[1m+++ b/app/Http/Controllers/user/UserDashboardController.php[m
+[36m@@ -127,7 +127,6 @@[m [mpublic function emailVerify(Request $request)[m
+             return response()->json(['error' => 'User not found'], 404);[m
+         }[m
+         $otp =  rand(123456, 999999);[m
+[31m-        //  this is [m
+         OtpVerification::create([[m
+             'user_id' => $user->id,[m
+             'otp' => $otp,[m

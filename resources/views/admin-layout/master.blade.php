@@ -78,8 +78,15 @@
                                         <li class="nk-menu-item">
                                             <a href="{{route('admin_dashboard',['locale'=>app()->getLocale()])}}" class="nk-menu-link"><span class="nk-menu-text">{{__('lang.disapproved_designer')}}</span>   </a>
                                         </li>
+                                       
                                     </ul><!-- .nk-menu-sub -->
                                 </li>  <!-- .nk-menu-item has-sub -->
+                                <li class="nk-menu-item">
+                                    <a href="{{url('user-profile')}}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-text-rich"></em></span>
+                                        <span class="nk-menu-text">Users</span>
+                                    </a>
+                                </li>
                             </ul><!-- .nk-menu -->
                         </div><!-- .nk-sidebar-menu -->
                     </div><!-- .nk-sidebar-content -->
