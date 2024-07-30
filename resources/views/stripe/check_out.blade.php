@@ -134,11 +134,6 @@ h1 {
         </div>
     </div>
 </div>
-
-
-
-{{-- <script type="text/javascript" src="https://js.stripe.com/v3/"></script> --}}
-
 <script>
   
 $(function() {
