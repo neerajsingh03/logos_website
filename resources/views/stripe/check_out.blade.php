@@ -1,90 +1,145 @@
 @extends('front-layout.master')
 @section('content')
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-</head>
-<body>
-    
+  <style>
+  body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    border-bottom: 1px solid #007bff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    box-shadow: none;
+}
+
+.input-group-text {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #ced4da;
+    border-radius: 4px 0 0 4px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.alert-danger {
+    margin-top: 10px;
+}
+
+.d-none {
+    display: none;
+}
+
+.error {
+    margin-top: 15px;
+}
+</style>  
 <div class="container text-center">
-    
-    <h1 clas=""><b>{{__('lang.payment')}}</b></h1>
+    <h1><b>{{__('lang.payment')}}</b></h1>
     
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default credit-card-box">
-                <div class="panel-heading display-table" >
-                        <h3 class="panel-title" >{{__('lang.payment_details')}}</h3>
+        <div class="col-md-6 offset-md-3">
+            <div class="card credit-card-box">
+                <div class="card-header">
+                    <h3 class="panel-title">{{__('lang.payment_details')}}</h3>
                 </div>
-                <div class="panel-body">
-                    <form 
-                            role="form" 
-                            action="{{route('stripe_post',['locale'=>app()->getLocale()])}}" 
-                            method="post" 
-                            class="require-validation"
-                            data-cc-on-file="false"
-                            data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
-                            id="payment-form">
+                <div class="card-body">
+                    <form role="form" 
+                          action="{{route('stripe_post',['locale'=>app()->getLocale()])}}" 
+                          method="post" 
+                          class="require-validation"
+                          data-cc-on-file="false"
+                          data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                          id="payment-form">
                         @csrf
-    
-                        <div class='form-row row'>
-                            <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>{{__('lang.name_on_card')}}</label> <input
-                                  name="name"  class='form-control' size='4' type='text'>
+
+                        <div class="form-row">
+                            <div class="col-12 form-group required">
+                                <label class="control-label">{{__('lang.name_on_card')}}</label>
+                                <input name="name" class="form-control" size="4" type="text">
                             </div>
                         </div>
-    
-                        <div class='form-row row'>
-                            <div class='col-xs-12 form-group card required'>
-                                <label class='control-label'>{{__('lang.card_number')}}</label> <input
-                                    autocomplete='off' class='form-control card-number' size='16'
-                                    type='text'>
+
+                        <div class="form-row">
+                            <div class="col-12 form-group card required">
+                                <label class="control-label">{{__('lang.card_number')}}</label>
+                                <input autocomplete="off" class="form-control card-number" size="16" type="text">
                             </div>
                         </div>
-                        <div class='form-row row'>
-                            <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                <label class='control-label'>{{__('lang.cvc')}}</label> <input autocomplete='off'
-                                    class='form-control card-cvc' placeholder='ex. 311' size='4'
-                                    type='text'>
+                        <div class="form-row">
+                            <div class="col-md-4 form-group cvc required">
+                                <label class="control-label">{{__('lang.cvc')}}</label>
+                                <input autocomplete="off" class="form-control card-cvc" placeholder="ex. 311" size="4" type="text">
                             </div>
-                            <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>{{__('lang.expiration_month')}}</label> <input
-                                    class='form-control card-expiry-month' placeholder='MM' size='2'
-                                    type='text'>
+                            <div class="col-md-4 form-group expiration required">
+                                <label class="control-label">{{__('lang.expiration_month')}}</label>
+                                <input class="form-control card-expiry-month" placeholder="MM" size="2" type="text">
                             </div>
-                            <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>{{__('lang.expiration_year')}}</label> <input
-                                    class='form-control card-expiry-year' placeholder='YYYY' size='4'
-                                    type='text'>
+                            <div class="col-md-4 form-group expiration required">
+                                <label class="control-label">{{__('lang.expiration_year')}}</label>
+                                <input class="form-control card-expiry-year" placeholder="YYYY" size="4" type="text">
                             </div>
                         </div>
-    
-                        <div class='form-row row'>
-                            <div class='col-md-12 error form-group hide'>
-                                <div class='alert-danger alert'>{{__('lang.please_correct_the_errors_and_try_again')}}.</div>
+
+                        <div class="form-row">
+                            <div class="col-md-12 error form-group d-none">
+                                <div class="alert alert-danger">{{__('lang.please_correct_the_errors_and_try_again')}}</div>
                             </div>
                         </div>
-    
+
                         <div class="row">
-                            <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">{{__('lang.pay_now')}} ₹<b>{{$totalCartPrice}}</b></button>
+                            <div class="col-12">
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">
+                                    {{__('lang.pay_now')}} ₹<b>{{$totalCartPrice}}</b>
+                                </button>
                             </div>
                         </div>
-                            
                     </form>
                 </div>
             </div>        
         </div>
     </div>
-        
 </div>
-    
-</body>
-    
-<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 
-<script type="text/javascript">
+
+
+{{-- <script type="text/javascript" src="https://js.stripe.com/v3/"></script> --}}
+
+<script>
   
 $(function() {
     var $form = $(".require-validation");
