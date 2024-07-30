@@ -49,6 +49,7 @@ class Stripecontroller extends Controller
         // Create a new Stripe customer.
         $customer = \Stripe\Customer::create([
             'name' => $request->name,
+            'email' => $user->email,
             'source' => $request->input('stripeToken'),
         ]);
 
@@ -63,6 +64,9 @@ class Stripecontroller extends Controller
             'currency' => 'inr',
             'payment_method_types' => ['card'],
         ]);
+        if($intent){
+            Cart::where('user_id', $user->id)->delete();
+        };
         return redirect('/')->with('msg', 'Payment successful!');
     }
 }

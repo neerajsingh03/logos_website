@@ -33,8 +33,8 @@ Route::get('/step', function () {
 // end testing route area
 //*************************Login Route ***********************//
 
-Route::get('/watermark', [ImageController::class,'waterMArk']);
-Route::post('image-process',[ImageController::class,'imageProcc']);
+Route::get('/watermark', [ImageController::class, 'waterMArk']);
+Route::post('image-process', [ImageController::class, 'imageProcc']);
 Route::get('/login', [AuthController::class, 'loginpage'])->name('login');
 Route::post('/login-process', [AuthController::class, 'loginProcess'])->name('login_process');
 
@@ -63,27 +63,27 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin-dashboard/logo-disapprove', [AdminLogoController::class, 'logoDisapprove'])->name('logo_disapprove');
     Route::get('admin-dashboard/approve-logo', [AdminLogoController::class, 'approvedLogo'])->name('approve_logo');
     Route::get('admin-dashboard/disaaprove-logo', [AdminLogoController::class, 'disapprovedLogo'])->name('disapprove_logo');
-    Route::get('change-password',[AdminLogoController::class,'changepassword']);
-    Route::post('change-pass-procc',[AdminLogoController::class,'changePassProcc']);
+    Route::get('change-password', [AdminLogoController::class, 'changepassword']);
+    Route::post('change-pass-procc', [AdminLogoController::class, 'changePassProcc']);
 
     // User details
-    Route::get('user-profile',[UserProfileController::class,'userProfile']);
-    Route::get('edit-profile/{id}',[UserProfileController::class,'editProfile']);
+    Route::get('user-profile', [UserProfileController::class, 'userProfile']);
+    Route::get('edit-profile/{id}', [UserProfileController::class, 'editProfile']);
 });
 
 //****************************************User Route *************************************//
 Route::get('/', [UserDashboardController::class, 'index'])->name('index');
 Route::get('logo-details{slug?}', [UserDashboardController::class, 'logoDetails'])->name('logo_details');
 Route::get('search', [UserDashboardController::class, 'searchLogo'])->name('search');
-Route::post('add-review',[UserDashboardController::class,'addreview'])->name('add_review');
+Route::post('add-review', [UserDashboardController::class, 'addreview'])->name('add_review');
 
 
 Route::get('check-api', [UserDashboardController::class, 'check_api']);
-Route::post('store',[UserDashboardController::class,'store']);
+Route::post('store', [UserDashboardController::class, 'store']);
 
 
 //************************Forgot Password With OTP functinality*********************** //
-Route::post('email-varify',[UserDashboardController::class,'emailVerify'])->name('email_verify');
+Route::post('email-varify', [UserDashboardController::class, 'emailVerify'])->name('email_verify');
 
 //************************Cart Route*********************** //
 Route::get('add-to-cart', [AddToCartController::class, 'addToCartPage'])->name('add_to_cart');
@@ -128,7 +128,7 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}'], 'm
     Route::post('stripe-post', [Stripecontroller::class, 'stripePost'])->name('stripe_post');
     Route::get('remove-cart-logo', [AddToCartController::class, 'removeCartLogo']);
 
-    
+
     //***************************************Designer Route Localization***********************//
     Route::get('designer-dashboard', [DesignerDashboardController::class, 'designerDashboard'])->name('designer_dashboard');
     Route::get('/designer-dashboard/add-logo', [LogoController::class, 'addlogoPage'])->name('logo_page');
