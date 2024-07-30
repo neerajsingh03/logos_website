@@ -4,31 +4,30 @@
 .user-profile {
     width: 100%;
     max-width: 1200px;
-    margin: 200px auto 0; /* Top margin added for spacing */
-    padding: 30px; /* Adjusted padding for better spacing */
-    background-color: #f9f9f9; /* Light background for the profile section */
-    border-radius: 8px; /* Rounded corners for a modern look */
+    margin: 200px auto 0; 
+    padding: 30px; 
+    background-color: #f9f9f9;
+    border-radius: 8px; 
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border-radius: 8px; /* Rounded corners for the table */
-    overflow: hidden; /* Ensures corners of the table are rounded */
+    border-radius: 8px; 
+    overflow: hidden;
 }
 
 thead {
-    background-color: #25df7c; /* Bright blue for the header */
-    color: #fff; /* White text for contrast */
+    background-color: #25df7c;
+    color: #fff; 
 }
 
 thead th {
     padding: 16px;
     text-align: left;
-    border-bottom: 2px solid #de69e4; /* Darker blue for the border */
-    white-space: nowrap; /* Prevent header text from wrapping */
-}
+    border-bottom: 2px solid #de69e4;
+    white-space: nowrap;
 
 tbody tr {
     border-bottom: 1px solid #ddd;
@@ -38,19 +37,19 @@ tbody td {
     padding: 14px;
     text-align: left;
     font-size: 16px;
-    white-space: nowrap; /* Prevent cell content from wrapping */
+    white-space: nowrap; 
 }
 
 tbody tr:nth-child(even) {
-    background-color: #e9efee; /* Light gray for even rows */
+    background-color: #e9efee; 
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #fff; /* White for odd rows */
+    background-color: #fff; 
 }
 
 tbody tr:hover {
-    background-color: #cce5ff; /* Light blue for hover effect */
+    background-color: #cce5ff; 
 }
 
 th, td {
@@ -61,12 +60,12 @@ th, td {
 @media (max-width: 768px) {
     table {
         display: block;
-        overflow-x: auto; /* Allows horizontal scroll on small screens */
+        overflow-x: auto;
         width: 100%;
     }
 
     thead {
-        display: none; /* Hide table headers on small screens */
+        display: none;
     }
 
     tbody, tr, td {
@@ -139,7 +138,6 @@ th, td {
         </div>
     </div>  
 
-    <!-- Include jQuery before your custom script -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
