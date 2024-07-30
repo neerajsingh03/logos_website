@@ -1,11 +1,11 @@
 @extends('admin-layout.master')
 @section('content')
 <style>
- .user-profile {
+.user-profile {
     width: 100%;
     max-width: 1200px;
     margin: 120px auto 0; /* Top margin added for spacing */
-    padding: 150px;
+    padding: 30px; /* Adjusted padding for better spacing */
     background-color: #f9f9f9; /* Light background for the profile section */
     border-radius: 8px; /* Rounded corners for a modern look */
 }
@@ -27,6 +27,7 @@ thead th {
     padding: 16px;
     text-align: left;
     border-bottom: 2px solid #de69e4; /* Darker blue for the border */
+    white-space: nowrap; /* Prevent header text from wrapping */
 }
 
 tbody tr {
@@ -37,6 +38,7 @@ tbody td {
     padding: 14px;
     text-align: left;
     font-size: 16px;
+    white-space: nowrap; /* Prevent cell content from wrapping */
 }
 
 tbody tr:nth-child(even) {
@@ -57,8 +59,14 @@ th, td {
 }
 
 @media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto; /* Allows horizontal scroll on small screens */
+        width: 100%;
+    }
+
     thead {
-        display: none;
+        display: none; /* Hide table headers on small screens */
     }
 
     tbody, tr, td {
@@ -75,8 +83,8 @@ th, td {
         position: relative;
         padding-left: 50%;
         text-align: right;
-        white-space: nowrap;
         font-size: 14px;
+        white-space: nowrap;
     }
 
     td::before {
@@ -90,6 +98,7 @@ th, td {
         border-right: 1px solid #ddd;
     }
 }
+
 /* this is user profile */
 
 </style>
@@ -126,7 +135,6 @@ th, td {
                                 </tbody>
                             </table>
                         </div>
-                        
                     </div>
                 </div>
             </div>
