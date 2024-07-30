@@ -17,17 +17,15 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use App\Jobs\SendEmailJob;
 
+
+// testing purpose route define
+
 Route::get('/event', function () {
     return view('api.test-localstorage');
 });
 Route::get('/step', function () {
     return view('api.step');
 });
-// testing purpose route define
-
-
-
-
 // Route::get('events', [AuthController::class, 'index']);
 
 // end testing route area
@@ -104,7 +102,6 @@ Route::get('user-favorite-logo', [FavoriteLogoController::class, 'userFavoriteLo
 Route::get('remove-cart-logo', [AddToCartController::class, 'removeCartLogo']);
 
 //************************Language Route*********************** //
-// Route::get('/{locale}', [UserDashboardController::class, 'switchLang'])->name('switchLang');
 
 Route::group(['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}'], 'middleware' => ['setlocale']], function () {
     // Route::get('/', [UserDashboardController::class, 'switchLang'])->name('changeLang');
@@ -146,11 +143,6 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}'], 'm
     Route::get('admin-dashboard/approve-logo', [AdminLogoController::class, 'approvedLogo'])->name('approve_logo');
     Route::get('admin-dashboard/disaaprove-logo', [AdminLogoController::class, 'disapprovedLogo'])->name('disapprove_logo');
 });
-
-// Route::group(['prefix' => '{lang}', 'where' => ['locale' => '[a-zA-Z]{2}'], 'middleware' => ['setlocaledesigner']], function () {
-//     Route::get('/', [DesignerDashboardController::class, 'switchLanguage']);
-//     Route::get('/designer-dashboard', [DesignerDashboardController::class, 'designerDashboard'])->name('designer_dashboard');
-// });
 
 //*********************************Email Route*******************//
 Route::get('/email-page', [EmailController::class, 'emailPage']);
