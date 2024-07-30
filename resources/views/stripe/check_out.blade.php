@@ -38,7 +38,7 @@
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group card required'>
                                 <label class='control-label'>{{__('lang.card_number')}}</label> <input
-                                    autocomplete='off' class='form-control card-number' size='20'
+                                    autocomplete='off' class='form-control card-number' size='16'
                                     type='text'>
                             </div>
                         </div>

@@ -12,6 +12,7 @@ use App\Http\Controllers\favorite\FavoriteLogoController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\stripe\Stripecontroller;
 use App\Http\Controllers\user\UserDashboardController;
+use App\Http\Controllers\UserProfile\UserProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use App\Jobs\SendEmailJob;
@@ -22,8 +23,16 @@ Route::get('/event', function () {
 Route::get('/step', function () {
     return view('api.step');
 });
+// testing purpose route define
+
+Route::get('user-profile',[UserProfileController::class,'userProfile']);
+
+
+
 
 // Route::get('events', [AuthController::class, 'index']);
+
+// end testing route area
 //*************************Login Route ***********************//
 
 Route::get('/watermark', [ImageController::class,'waterMArk']);

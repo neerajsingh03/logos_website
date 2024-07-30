@@ -14,15 +14,16 @@ use App\Jobs\SendEmailJob;
 use App\Listeners\SendEmailConfirm;
 use App\Events\SendEmail;
 use Illuminate\Support\Facades\App;
+
 class AuthController extends Controller
-{   
+{
     public function loginPage(Request $request)
-    {   
-    //   dd($request->all());
+    {
+        //   dd($request->all());
         // dd($request->redirect_url);
         $redirectUrl = $request->redirect_url;
-       session()->put('redirect',$redirectUrl);
-       
+        session()->put('redirect', $redirectUrl);
+
         if (auth()->user()) {
             return redirect('/');
         } else {
@@ -31,9 +32,9 @@ class AuthController extends Controller
     }
     public function loginProcess(Request $request)
     {
-     
+
         // dd($request->all());
-        
+
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -42,9 +43,9 @@ class AuthController extends Controller
         //*****************LoginProcess****************//
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            
-           
-           
+
+
+
             if (Auth()->user()->role === 'designer') {
                 return redirect('designer-dashboard');
             } elseif (Auth()->user()->role === 'admin') {
@@ -60,21 +61,20 @@ class AuthController extends Controller
             if (Auth()->user()->role === 'user') {
                 return redirect('/');
             }
-            
         }
         $lng = App::setLocale('en');
-       
-        return redirect($lng.'/login')->withError(__('lang.login_invalid'));
+
+        return redirect($lng . '/login')->withError(__('lang.login_invalid'));
     }
 
     public function registrationPage()
     {
-     
+
         return view('form.register');
     }
     public function registrationProcess(Request $request)
     {
-   
+
         // ********************Registration Data Validate *******************//
 
         $request->validate([
@@ -100,13 +100,11 @@ class AuthController extends Controller
             $data->role = 'designer';
             $data->is_approved = true;
             $data->is_disapproved = false;
-        }
-        else if ($request->role === 'admin') {      // role designer
+        } else if ($request->role === 'admin') {      // role designer
             $data->role = 'admin';
             $data->is_approved = true;
             $data->is_disapproved = false;
         }
-
         // Mail::to($data->email)->send(new WelcomeEmail($data));  // send mail after user registration successfully
         $data->save();
 
@@ -118,9 +116,7 @@ class AuthController extends Controller
             } elseif (Auth()->user()->role === 'user') {
                 return redirect('/');
             }
-        }
-        
-        else {
+        } else {
             return 'Authentication failed';
         }
     }

@@ -61,7 +61,8 @@ $(document).ready(function() {
         $('#user-data').empty();
 
         users.forEach(function(user,index) {
-            var newRow = `<tr id="user-${index}"><td>${user.name}</td><td>${user.email}</td><td><button onclick="deleteUser(${index})">Delete</button></td></tr>`;
+            var newRow = `<tr id="user-${index}"><td>${user.name}</td><td>${user.email}</td><td>
+                <button onclick="deleteUser(${index})">Delete</button></td></tr>`;
             $('#user-data').append(newRow);
         });
     }

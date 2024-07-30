@@ -12,7 +12,7 @@ use App\Models\user;
 class Stripecontroller extends Controller
 {
     public function checkOut(Request $request)
-    {   
+    {
         // $key =  (env('STRIPE_SECRET'));
         // dd($key);
         $user = auth()->user();
