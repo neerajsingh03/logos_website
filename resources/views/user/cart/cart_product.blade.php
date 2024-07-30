@@ -96,7 +96,6 @@
             margin-bottom: 20px;
         }
 </style>
-{{-- <center> --}}
   @if(session('msg'))
    <h2 class="text-success">{{session('msg')}}</h2>
   @endif
