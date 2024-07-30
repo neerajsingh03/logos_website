@@ -4,7 +4,7 @@
 .user-profile {
     width: 100%;
     max-width: 1200px;
-    margin: 120px auto 0; /* Top margin added for spacing */
+    margin: 200px auto 0; /* Top margin added for spacing */
     padding: 30px; /* Adjusted padding for better spacing */
     background-color: #f9f9f9; /* Light background for the profile section */
     border-radius: 8px; /* Rounded corners for a modern look */
@@ -117,7 +117,6 @@ th, td {
                                         <th>Number</th>
                                         <th>Stripe ID</th>
                                         <th>Status</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -129,7 +128,6 @@ th, td {
                                         <td>{{ $user->number }}</td>
                                         <td>{{ $user->stripe_customer_id ?? 'null' }}</td>
                                         <td>{{ $user->is_approved ?? 'null' }}</td>
-
                                     </tr>
                                     @endforeach
                                 </tbody>
