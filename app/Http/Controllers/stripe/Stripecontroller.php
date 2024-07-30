@@ -13,8 +13,6 @@ class Stripecontroller extends Controller
 {
     public function checkOut(Request $request)
     {
-        // $key =  (env('STRIPE_SECRET'));
-        // dd($key);
         $user = auth()->user();
         if (auth()->user()) {
             $userCart = Cart::with('logo')->where('user_id', $user->id)->get();
@@ -43,8 +41,6 @@ class Stripecontroller extends Controller
                 $totalCartPrice += $item->logo->price;
             }
         }
-        // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
         Stripe::setApiKey(env('STRIPE_SECRET'));
         // Create a new Stripe customer.
         $customer = \Stripe\Customer::create([
