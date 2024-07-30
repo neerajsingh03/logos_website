@@ -211,7 +211,7 @@
                         error: function (xhr, status, error) {
                          console.error(xhr.responseText);
                          $('#email-err').text(JSON.parse(xhr.responseText).error);
-                         $('#email').val('');
+                         $('#email').val('');           
                         }
                     });
                   

@@ -10,7 +10,7 @@ class AdminLogoController extends Controller
 {
     public function logoRequest()
     {
-        $logos = Logo::where('is_approved', '=', false)->where('is_disapproved', '=', false)->get();
+        $logos = Logo::where([['is_approved', false],['is_disapproved', false]])->get();
         // $logos = Logo::where([ ['is_approved', '=', false],['is_disapproved', '=', false] ])->get();
         // if ($logos->isEmpty()) {
         //     Alert::success('all done', 'You dont have any request ')->persistent(true, true);

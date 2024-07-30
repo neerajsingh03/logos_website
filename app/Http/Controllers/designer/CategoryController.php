@@ -11,6 +11,7 @@ class CategoryController extends Controller
 {
     public function categoriesPage()
     {
+        // changes
         $parent_category = Categories::all();
 
         return view('designer.categories.add_categories', compact('parent_category'));
@@ -19,7 +20,7 @@ class CategoryController extends Controller
     {
 
         $request->validate([
-            'category_name' => 'required|',
+            'category_name' => 'required',
             'cat_image' => 'required',
         ]);
         $category = new Categories();
