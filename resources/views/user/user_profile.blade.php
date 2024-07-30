@@ -1,6 +1,7 @@
 @extends('admin-layout.master')
 @section('content')
 <style>
+    /* css user profile */
 .user-profile {
     width: 100%;
     max-width: 1200px;
@@ -28,7 +29,7 @@ thead th {
     text-align: left;
     border-bottom: 2px solid #de69e4;
     white-space: nowrap;
-
+}
 tbody tr {
     border-bottom: 1px solid #ddd;
 }
