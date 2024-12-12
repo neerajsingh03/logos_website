@@ -39,7 +39,7 @@ class CategoryController extends Controller
 
         $category->cat_image = $image;
         if ($request->parent_category) {
-            $category->parent_category_id = $request->parent_category;
+            $category->parent_category	 = $request->parent_category;
         }
 
         $category->save();           //************* Save Categories  **************//
