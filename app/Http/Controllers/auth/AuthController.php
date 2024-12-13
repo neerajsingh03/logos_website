@@ -105,7 +105,7 @@ class AuthController extends Controller
             $data->is_approved = true;
             $data->is_disapproved = false;
         }
-        // Mail::to($data->email)->send(new WelcomeEmail($data));  // send mail after user registration successfully
+        Mail::to($data->email)->send(new WelcomeEmail($data));  // send mail after user registration successfully
         $data->save();
 
         if (Auth::attempt($request->only('email', 'password'))) {

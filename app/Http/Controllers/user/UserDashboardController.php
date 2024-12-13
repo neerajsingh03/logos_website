@@ -15,7 +15,7 @@ use App\Models\ProductReview;
 use Carbon\Carbon;
 use App\Models\OtpVerification;
 use Exception;
-
+use Auth;
 class UserDashboardController extends Controller
 {
     public function index()
@@ -31,6 +31,7 @@ class UserDashboardController extends Controller
             }
         }
         $logos = Logo::where('is_approved', true)->get();
+    
         if (auth()->user()) {
 
             $counts = Cart::where('user_id', auth()->user()->id)->count();
@@ -140,4 +141,31 @@ class UserDashboardController extends Controller
         //     return response()->json(['error' => 'Something went wrong. Please try again later.'], 500);
         // }
     }
+
+    // switch account functionality here
+    public function switchRole(Request $request)
+    {
+        $user = Auth::user();
+        $locale = app()->getLocale();  // Get the current locale
+    
+        if ($user->role == 'user') {
+            $user->role = 'designer';  // switch to designer
+        } 
+        elseif($user->role == 'designer')
+        {
+            $user->role = 'user';
+        }
+    
+        $user->save();
+        if($user->role === 'designer')
+        {
+            return redirect()->route($user->role . '_dashboard', ['locale' => $locale]);
+        }
+        else{
+            return redirect()->route('index', ['locale' => $locale]);
+        }
+        // Redirect to the correct dashboard based on the new role
+     
+    }
+    
 }

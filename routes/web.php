@@ -100,6 +100,7 @@ Route::get('user-favorite-logo', [FavoriteLogoController::class, 'userFavoriteLo
 
 //**************************Remove Cart Logo **************************//
 Route::get('remove-cart-logo', [AddToCartController::class, 'removeCartLogo']);
+Route::get('/switch-role', [UserDashboardController::class, 'switchRole'])->name('switch.role');
 
 //************************Language Route*********************** //
 
