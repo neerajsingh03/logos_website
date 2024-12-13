@@ -12,7 +12,12 @@ class AdminController extends Controller
         return view('admin.dashboard.index');
     }
 }
+<<<<<<< HEAD
+}
 
 
 
 // ffsdfhhh
+=======
+}
+>>>>>>> e112528d69f4cb27f8e0f1351c177774a8d91630

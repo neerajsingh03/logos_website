@@ -13,6 +13,7 @@ class Stripecontroller extends Controller
 {
     public function checkOut(Request $request)
     {
+
         $user = auth()->user();
         if (auth()->user()) {
             $userCart = Cart::with('logo')->where('user_id', $user->id)->get();
