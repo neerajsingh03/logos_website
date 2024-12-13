@@ -29,6 +29,10 @@ class FavoriteLogoController extends Controller
     }
     public function userFavoriteLogo()
     {
+        if(!auth()->user())
+        {
+            return redirect('login');
+        }
         $user = auth()->user();
         $counts = Favorite::where('user_id', auth()->user()->id)->count();
         $userCart = Favorite::with('logo')->where('user_id', $user->id)->get();
